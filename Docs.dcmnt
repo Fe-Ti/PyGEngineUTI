@@ -2,19 +2,20 @@ Short reference what do what
 
 classes:
 	vector - class which describes a 2D vector
+	GUI(reolution_X,resolution_Y) - makes simple expandable GUI with  canvas & text label in one frame and controls in another
 
 variables
 
 	USUALY:
-	c -counter
-	i - iteration variable (same for j, k)
+		c -counter
+		i - iteration variable (same for j, k)
 
 	settings - list, which contains:
-	resolx (resoly) - resolution in X axis
-	pixsize -scaling factor
+		resolx (resoly) - resolution in X axis
+		pixsize -scaling factor
 
-	canvas - canvas , where action is going)
-	PxMass - 2D list of all squares of pixsize*pixsize pixels^2, they are objects of canvas (deprecated?)
+		canvas - canvas , where action is going)
+	?PxMass - 2D list of all squares of pixsize*pixsize pixels^2, they are objects of canvas (deprecated?)
 
 
 

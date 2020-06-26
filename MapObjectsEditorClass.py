@@ -77,7 +77,7 @@ class MOE(GUI):
 		#self.canvas.delete('all')
 		
 		self.sprites['current'].name = name
-		sprfile = open(name+'.spr','r')
+		sprfile = open(self.SPointer+name+'.spr','r')
 		line=''
 		for i in range(self.t_reso):
 			line = sprfile.readline().replace('\n','')
@@ -110,17 +110,17 @@ class MOE(GUI):
 		self.updateTextOut()
 		
 	def saveObject(self,name):
-		objfile = open (name+'.mo','w')
+		objfile = open (self.OPointer+name+'.mo','w')
 		sprite = self.sprites['current'].name
 		typeTags = ''
 		for i in self.Ttags:
-			typeTags+= self.Ttags[i]
-		text = sprite + '\n' + typeTags
+			typeTags+= self.Ttags[i]+'|@|'
+		text = sprite + '\n' + typeTags[:-3]
 		objfile.write(text)
 		objfile.close()
 		
 	def loadObject(self,name):
-		objfile = open (name+'.mo','r')
+		objfile = open (self.OPointer+name+'.mo','r')
 		
 		self.sprites['current'].name = objfile.readline().replace('\n','')
 		self.spritePicker.delete(0, END)
@@ -128,7 +128,7 @@ class MOE(GUI):
 		self.loadSprite(self.sprites['current'].name)
 		
 		Ttags = objfile.readline()
-		Ttags = Ttags.split('<>')
+		Ttags = Ttags.split('|@|')
 		self.Ttags = dict()
 		for i in Ttags:
 			self.Ttags[i.replace('\n','')] = i 

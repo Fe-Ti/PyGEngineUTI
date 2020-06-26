@@ -111,7 +111,7 @@ def saveSprite(event):
     global app
     
     name = app.spriteName.get()
-    sprfile = open(name+'.spr','w')
+    sprfile = open(app.SPointer+name+'.spr','w')
     line=''
     for i in range(app.t_reso):
         for k in range(app.t_reso):
@@ -137,7 +137,7 @@ def exportSprite(event):
 def loadSprite(event):
     global app
     name = app.spriteName.get()
-    sprfile = open(name+'.spr','r')
+    sprfile = open(app.SPointer+name+'.spr','r')
     line=''
     for i in range(app.t_reso):
         line = sprfile.readline().replace('\n','')

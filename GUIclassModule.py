@@ -4,10 +4,15 @@ from tkinter import *
 from classModule import *
 
 class GUI: # common GUI for games and editors
+	
+	IPointer='res/misc/'
+	SPointer='res/sprites/'
+	OPointer='res/objects/'
+	MPOinter='res/maps/'
 
 	def __init__ (self,apptype):
 		# begin reading init file
-		self.INITFILE = open (apptype+'.init','r')
+		self.INITFILE = open (self.IPointer+apptype+'.init','r')
 		self.INITPARAMS = dict()
 		line = self.INITFILE.readline()
 		while line!="":
@@ -51,7 +56,7 @@ class GUI: # common GUI for games and editors
 		self.root.mainloop()
 
 	def importSettings(self):
-		setsfile = open (self.type+'.settings','r')
+		setsfile = open (self.IPointer+self.type+'.settings','r')
 		settings = dict()
 		line = setsfile.readline()
 		while line!="":
@@ -61,7 +66,7 @@ class GUI: # common GUI for games and editors
 		self.settings = settings
 
 	def exportSettings(self,name):
-		settsfile = open (self.type+'.settings','w')
+		settsfile = open (self.IPointer+self.type+'.settings','w')
 		for i in self.settings:
 			line = i+'='+str(self.settings[i])+'\n'
 			settsfile.write(line)
@@ -69,7 +74,7 @@ class GUI: # common GUI for games and editors
 	def regenerate(self,apptype):
 		self.root.destroy()
 		# begin reading init file
-		self.INITFILE = open (apptype+'.init','r')
+		self.INITFILE = open (self.IPointer+apptype+'.init','r')
 		self.INITPARAMS = dict()
 		line = self.INITFILE.readline()
 		while line!="":
