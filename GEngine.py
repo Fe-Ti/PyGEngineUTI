@@ -5,7 +5,7 @@ from tkinter import *
 from time import *
 
 # my modules
-from classModule import *
+from GUIclassModule import *
 from mapModule import *
 
 print ('start')
