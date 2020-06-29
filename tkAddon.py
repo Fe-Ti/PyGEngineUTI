@@ -18,7 +18,7 @@ class scrListBox(GeoMan):
 	
 	def __init__(self, root, LIST):
 		self.Frame = tk.Frame(root)
-		self.ListBox = tk.Listbox(self.Frame, width=50)
+		self.ListBox = tk.Listbox(self.Frame, width=30)
 		 
 		for i in LIST:
 		    self.ListBox.insert(tk.END, i)
@@ -30,7 +30,7 @@ class scrListBox(GeoMan):
 		self.scrollbar.pack(side = tk.RIGHT, fill = tk.Y)
 		
 	def getCurrent(self):
-		self.ListBox.get(self.ListBox.curselection())
+		return self.ListBox.get(self.ListBox.curselection())
 		
 	
 	

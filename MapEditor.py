@@ -107,6 +107,20 @@ class ME (GUI):
 		def initializeBFrame(self):	
 			self.BFrame = Frame(self.controlsFrame,bg='purple')
 			self.BFrame.grid(column=3,row=0)
+			
+			self.BRUSHES = ['selector','object','terrain vertex']
+			#self.brushListBox = Listbox(self.BFrame)
+			self.brushRB=dict()
+			self.brushNumber = IntVar()
+			c=0
+			def select():
+				self.currentBrush = self.BRUSHES[brushNumber]
+			for i in self.BRUSHES:
+				#self.brushListBox.insert(END,i)
+				self.brushRB[i] = Radiobutton(self.BFrame, text=i,value=c, variable=self.brushNumber)
+				self.brushRB[i].pack(fill=X)
+				c+=1
+			
 			# END brush & layers manipulation frame
 		initializeBFrame(self)
 		

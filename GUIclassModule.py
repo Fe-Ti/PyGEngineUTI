@@ -1,6 +1,8 @@
 # adding GUI class to classes module ==> GUIclassModule
 
 from tkinter import *
+#import os
+
 from classModule import *
 
 class GUI: # common GUI for games and editors
@@ -39,12 +41,10 @@ class GUI: # common GUI for games and editors
 		self.root = Tk()
 
 		self.screenFrame = Frame(self.root)
-		self.canvas = Canvas(self.screenFrame,width = self.INITPARAMS['resx'], height = self.INITPARAMS['resy'])
-		self.textOut = Label(self.screenFrame)
-
 		self.screenFrame.grid(column=0,row=0)
 
-
+		self.canvas = Canvas(self.screenFrame,width = self.INITPARAMS['resx'], height = self.INITPARAMS['resy'])
+		self.textOut = Label(self.screenFrame)
 		self.canvas.grid(column = 0,row = 0)
 		self.textOut.grid(column = 0,row = 1)
 		
@@ -101,11 +101,12 @@ class GUI: # common GUI for games and editors
 		self.root = Tk()
 
 		self.screenFrame = Frame(self.root)
-		self.canvas = Canvas(self.screenFrame,width = self.INITPARAMS['resx'], height = self.INITPARAMS['resy'])
-		self.textOut = Label(self.screenFrame)
+
 
 		self.screenFrame.grid(column=0,row=0)
-
+		
+		self.canvas = Canvas(self.screenFrame,width = self.INITPARAMS['resx'], height = self.INITPARAMS['resy'])
+		self.textOut = Label(self.screenFrame)
 
 		self.canvas.grid(column = 0,row = 0)
 		self.textOut.grid(column = 0,row = 1)

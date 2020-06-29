@@ -4,7 +4,6 @@
 # standart python3 modules
 from tkinter import *
 from time import *
-
 # my modules
 from GUIclassModule import *
 ##from mapModule import * <- don't bother
@@ -25,36 +24,37 @@ resy=t_reso*scale*cy
 app.t_reso = app.INITPARAMS['t_reso']
 
 app.colorPickerL = Label (app.controlsFrame, text='Color:')
-app.colorPickerL.pack()
+app.colorPickerL.grid(column=0,row=0)
 
 app.colorPicker = Entry (app.controlsFrame)
-app.colorPicker.pack()
+app.colorPicker.grid(column=0,row=1)
 
 
 app.brushSizeL = Label (app.controlsFrame, text='Size:')
-app.brushSizeL.pack()
+app.brushSizeL.grid(column=0,row=2)
 
 app.brushSize = Entry (app.controlsFrame)
-app.brushSize.pack()
+app.brushSize.grid(column=0,row=3)
 app.brushSize.insert(0,10)
 
 app.spriteNameL = Label (app.controlsFrame,text='Sprite name:')
-app.spriteNameL.pack()
+app.spriteNameL.grid(column=0,row=4)
 
 app.spriteName = Entry (app.controlsFrame)
-app.spriteName.pack()
+app.spriteName.grid(column=0,row=5)
 
 app.gridToggle = Button (app.controlsFrame,text = 'Toggle grid: ON',bg='green',activebackground='green',highlightcolor='green')
-app.gridToggle.pack()
+app.gridToggle.grid(column=0,row=6)
 
 app.saveSpriteB = Button (app.controlsFrame, text='Save sprite')
-app.saveSpriteB.pack()
+app.saveSpriteB.grid(column=0,row=7)
 
 app.loadSpriteB = Button (app.controlsFrame, text='Load sprite')
-app.loadSpriteB.pack()
+app.loadSpriteB.grid(column=0,row=8)
 
 app.exportSpriteB = Button (app.controlsFrame, text='Export sprite')
-app.exportSpriteB.pack()
+app.exportSpriteB.grid(column=0,row=9)
+
 
 app.PXs = []
 app.PXsData = []
@@ -149,11 +149,12 @@ def loadSprite(event):
     sprfile.close()
 
 app.canvas.bind('<B1-Motion>', ChangeColor)
+app.canvas.bind('<Button-1>', ChangeColor)
 app.canvas.bind('<ButtonRelease>', updatePXsData)
 
 app.gridToggle.bind('<Button>',ToggleGrid)
 app.saveSpriteB.bind('<Button>',saveSprite)
 app.loadSpriteB.bind('<Button>',loadSprite)
-app.exportSpriteB.bind('<Button>',exportSprite)
+#app.exportSpriteB.bind('<Button>',exportSprite)
 
 app.start()

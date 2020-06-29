@@ -21,7 +21,7 @@ class MOE(GUI):
 		self.spritePicker = Entry (self.controlsFrame)
 		self.spritePicker.pack()
 	
-		self.TtagsL = Label (self.controlsFrame, text='Tags for MO type(press Return to add or Delete to remove):')
+		self.TtagsL = Label (self.controlsFrame, text='Tags for MO type\n(press Return to add or Delete to remove):')
 		self.TtagsL.pack()
 	
 		self.TtagsEntry = Entry (self.controlsFrame)

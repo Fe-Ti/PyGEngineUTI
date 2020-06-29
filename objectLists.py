@@ -1,17 +1,8 @@
-TestOL = [
-	'lol',
-	'rofl'
-	]
+import subprocess as sp
 
-Houses = [
-	'simple-House'
-	]
-Shops = [
-'weapons-Shop',
-'potions-Shop',
-'market-Shop'
-]
+listObjects = sp.Popen(['ls','res/objects'],stdout=sp.PIPE,stderr=sp.STDOUT)
+stdout,stderr = listObjects.communicate()
+LIST = stdout.decode('UTF-8','strict').split('.mo\n')[:-1]
 
-AOL = Houses + Shops
-
-AOL_t = AOL + TestOL
+AOL=LIST
+AOL_t=AOL
