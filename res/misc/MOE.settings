@@ -1,8 +1,0 @@
-pixsize=2
-goN='Up'
-goS='Down'
-goE='Right'
-goW='Left'
-gamevelocity=5
-saveSettings='s'
-t_reso=32
