@@ -7,3 +7,7 @@ Current qality: **VERY EARLY PRE-ALPHA**
 
 Abilities:
 It can correctly react when player types 'menu'. 
+## HOWTO RUN
+```shell
+python3 testMe.py
+```
