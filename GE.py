@@ -71,14 +71,15 @@ class GameEngineUti:
 		UpdateScreen(self)
 		while self.ExitSignal!=1:
 			action=list(input('Action: ').split())
-			if action!='':
+			if action!=[]:
+				#print ('action',action)
 				if action[0] in MiscFunc:
 					self.MiscRunner(action)
 				elif action[0] in GeneralFunc:
 					self.GeneralRunner(action)
 				elif action[0] in MoveFunc:
 					self.MoveRunner(action)
-				UpdateScreen(self)
+			UpdateScreen(self)
 
 	def SwitchPlayer(self,player=''):
 		if player=='':

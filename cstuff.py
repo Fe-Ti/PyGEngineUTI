@@ -64,14 +64,14 @@ def Composer(ooc_GameEngineUti,Map):
 		Where= LowerTopBar[i]
 		NewSD[1]= Placer(InString,NewSD[1],Where)
 	NewSD[2:23]=Map[:]
-	print(len(NewSD))
+	#print("in Composer",len(NewSD))
 	ooc_GameEngineUti.ScreenData=NewSD[:] # returning ScreenData
 
 def UpdateScreen(ooc_GameEngineUti): #TODO
 	CurMapText = csm.GenerateMatrix(80,21)
 	for i in range(21):
 		for j in range(80):
-			print(i,j)
+			#print("in UpdateScreen",i,j)
 			CurMapText[i][j]=ooc_GameEngineUti.CurMap.CellsData[j][i].Symbol
 	Composer(ooc_GameEngineUti,CurMapText)
 	PrintScreen(ooc_GameEngineUti.ScreenData)
@@ -83,16 +83,16 @@ def DrawTextMenu(ooc_GameEngineUti,menu):
 	Options=ooc_GameEngineUti.Story.Chapters[menu].Options
 	Results=ooc_GameEngineUti.Story.Chapters[menu].Results
 	TextToDisplay=MainText+[' '*80]+Options # empty string in between 
-	print(TextToDisplay)
+	#print("in DrawTextMenu",TextToDisplay)
 	TextMap=csm.GenerateMatrix(80,21) # generating "map"
 	PrintScreen(TextMap)
 	for i in range(len(TextToDisplay)):
-		print('before',TextMap[i],TextToDisplay[i])
-		PrintScreen(TextMap)
+		#print('before',TextMap[i],TextToDisplay[i])
+		#PrintScreen(TextMap)
 		TextMap[i]=Placer(TextToDisplay[i],TextMap[i])
-		print('after',TextMap[i],TextToDisplay[i],'\noutputing ---->')
-		PrintScreen(TextMap)
-	PrintScreen(TextMap)
+		#print('after',TextMap[i],TextToDisplay[i],'\noutputing ---->')
+		#PrintScreen(TextMap)
+	#PrintScreen(TextMap)
 	Composer(ooc_GameEngineUti,TextMap)
 	while action not in Answers:
 		PrintScreen(ooc_GameEngineUti.ScreenData)

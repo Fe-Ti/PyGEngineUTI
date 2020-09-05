@@ -98,7 +98,10 @@ class Story:
 	def LoadStory(self):
 		print ("LOADING STORY...")
 		###TESTING###
-		self.Chapters={'menu':Chapter(['TEST TEST','TEST TEST'],['a) +10 Energy'],['a'],['v: CurPlayer.Energy = CurPlayer.Energy + 10'])}
+		self.Chapters={
+		'menu':Chapter(['TEST menu','Input "a"'],['a) +10 Energy'],['a'],['v: CurPlayer.Energy = CurPlayer.Energy + 10;s:menu1']),
+		'menu1':Chapter(['TEST menu1','Input "b" to go back'],['a) +10 Energy','b) go to menu'],['a','b'],['v: CurPlayer.Energy = CurPlayer.Energy + 10','s:menu'])
+		}
 		
 		
 		#############
@@ -121,7 +124,7 @@ def GenerateMatrix(x,y):
 		matrix.append([])
 		for j in range(x):
 			matrix[i].append(' ')
-			print (len(matrix),'@@',len(matrix[i]))
+			#print (len(matrix),'@@',len(matrix[i]))
 	return matrix
 ########################################################################
 #	End General
