@@ -40,19 +40,23 @@ class GameEngineUti:
 			return 1
 
 	def InitStuff(self):
+		
+		self.Story=csm.Story('story')
+		self.Story.LoadStory()
+		print(self.Story.Chapters)
+		
 		InitScreen(self)
 		self.Players=[]
 		for i in range(self.PlayersCount):
 			self.Players.append(csm.Player(Name='Player '+str(i)))
 		self.CurPlayer=self.Players[0]
+		
 		self.CurMap=csm.Map('menu') # menu map is an flat map which 
 		self.CurMap.LoadMap()
 
 		self.UnitList=self.Players
 
-		self.Story=csm.Story('story')
-		self.Story.LoadStory()
-		print(self.Story.Chapters)
+
 #
 #	End of Initialization Section 
 #

@@ -1,12 +1,16 @@
+import json
 ########################################################################
 #
 #	Begin Classes Section
 #
 ########################################################################
-##
-##	Map Subsection
-##
 ########################################################################
+####
+####	Map Subsection
+####
+########################################################################
+MapDirPointer='maps/'
+StoryDirPointer='story/'
 
 class Unit:
 	PosX=0
@@ -27,20 +31,10 @@ class Player(Unit):#TODO
 	Number=''
 	pass
 
-class CellObject:
-	Name=''
-	Tags=[]
-	Symbol=''
-	#Image=''
-	def __init__(self, Name='', Tags=[], Symbol=''):
-		self.Name=Name
-		self.Tags=Tags[:]
-		self.Symbol=Symbol
-
 class Cell:
 	CellName='' # 
 	Symbol='' # is used if there is no image for terrain 
-	Object='' 
+	Object=''
 	Tags=[]
 	EnergyCost=0
 	Scriptstr=''
@@ -67,15 +61,17 @@ class Map:
 		
 	def LoadMap(self):
 		print ("LOADING MAP...")
+		# ~ mapfile= open (MapDirPointer+self.Name,'r')
+		# ~ line=mapfile.readline()
 ########################################################################
-##
-##	End of Map Subsection
-##
+####
+####	End of Map Subsection
+####
 ########################################################################
 ########################################################################
-##
-##	Story Subsection
-##
+####
+####	Story Subsection
+####
 ########################################################################
 class Chapter:#TODO
 	MainText=[]
@@ -91,33 +87,51 @@ class Chapter:#TODO
 
 class Story:
 	Chapters=dict()
+	Name=''
 	
-	def __init__(self,Name=''):
+	def __init__(self,Name='',):
 		self.Name=Name
 		
 	def LoadStory(self):
-		print ("LOADING STORY...")
+		print("Loading Story...")
+		print("Loading RawData...")
+		storyfile = open(StoryDirPointer+self.Name+'.json','r')
+		RawData = storyfile.read()
+		storyfile.close()
+		print("Loaded RawData [OK]")
+		print("Processing RawData...")
+		ChaptersDict = json.loads(RawData)
+		self.Chapters = dict()
+		print("Processed RawData [OK]")
+		for i in ChaptersDict:
+			print("Processing Chapter",i,"...")
+			self.Chapters[i] = Chapter(ChaptersDict[i]['MainText'],ChaptersDict[i]['Options'],ChaptersDict[i]['Answers'],ChaptersDict[i]['Results'])
+			print("Processed Chapter",i,"[OK]")
+		print("Loaded Story [OK]")
+		
 		###TESTING###
-		self.Chapters={
-		'menu':Chapter(['TEST menu','Input "a"'],['a) +10 Energy'],['a'],['v: CurPlayer.Energy = CurPlayer.Energy + 10;s:menu1']),
-		'menu1':Chapter(['TEST menu1','Input "b" to go back'],['a) +10 Energy','b) go to menu'],['a','b'],['v: CurPlayer.Energy = CurPlayer.Energy + 10','s:menu'])
-		}
+		# ~ self.Chapters={
+		# ~ 'menu':Chapter(['TEST menu','Input "a"'],['a) +10 Energy'],['a'],['v: CurPlayer.Energy = CurPlayer.Energy + 10;s:menu1']),
+		# ~ 'menu1':Chapter(['TEST menu1','Input "b" to go back'],['a) +10 Energy','b) go to menu'],['a','b'],['v: CurPlayer.Energy = CurPlayer.Energy + 10','s:menu'])
+		# ~ }
 		
 		
 		#############
 ########################################################################
-##
-##	End of Story Subsection
-##
+####
+####	End of Story Subsection
+####
 ########################################################################
 ########################################################################
 #
 #	End Classes Section
 #
 ########################################################################
+
 ########################################################################
-#	Begin General Functions
+#	Begin General Functions Section
 ########################################################################
+
 def GenerateMatrix(x,y):
 	matrix=[]
 	for i in range(y):
@@ -126,6 +140,7 @@ def GenerateMatrix(x,y):
 			matrix[i].append(' ')
 			#print (len(matrix),'@@',len(matrix[i]))
 	return matrix
+
 ########################################################################
-#	End General
+#	End General Functions Section
 ########################################################################

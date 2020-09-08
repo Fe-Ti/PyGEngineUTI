@@ -1,0 +1,1 @@
+{"menu": {"MainText": ["TEST menu", "Input \"a\""], "Answers": ["a"], "Options": ["a) +10 Energy"], "Results": ["v: CurPlayer.Energy = CurPlayer.Energy + 10;s:menu1"]}, "menu1": {"MainText": ["TEST menu1", "Input \"b\" to go back"], "Answers": ["a", "b"], "Options": ["a) +10 Energy", "b) go to menu"], "Results": ["v: CurPlayer.Energy = CurPlayer.Energy + 10", "s:menu"]}}
